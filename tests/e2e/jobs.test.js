@@ -39,4 +39,22 @@ describe('Jobs route', () => {
       .send(newJob);
     expect(job.body).toEqual({ ...newJob, __v: 0, _id: expect.any(String), date: expect.any(String) });
   });
+
+  it('gets all jobs', async() => {
+
+    const job1 = await request(app)
+      .post('/api/v1/jobs')
+      .send(newJob);
+    const job2 = await request(app)
+      .post('/api/v1/jobs')
+      .send(newJob);
+
+    const allJobs = await request(app)
+      .get('/api/v1/jobs');
+
+    expect(allJobs.body).toEqual([
+      { ...job1.body, _id: job1.body._id, date: job1.body.date }, 
+      { ...job2.body, _id: job2.body._id, date: job2.body.date }
+    ]);
+  });
 });
