@@ -1,9 +1,9 @@
 language: node_js
 node_js: node
 services: mongodb
-env: MONGODB_URI=
-  # deploy:
-  # provider:
-  # app:
-  # api_key:
-    #  secure:
+env: MONGODB_URI=mongodb://localhost:27017/jobs
+deploy: 
+  provider: heroku
+  app: jobtographer
+  api_key:
+     secure:
