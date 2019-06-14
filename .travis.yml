@@ -2,8 +2,8 @@ language: node_js
 node_js: node
 services: mongodb
 env: MONGODB_URI=mongodb://localhost:27017/jobs
-deploy: 
+deploy:
   provider: heroku
   app: jobtographer
   api_key:
-     secure:
+    secure: ysxmDKUuIPbuYL4BDoU1p4T60QksIA3pNR02raouV+Mj6J4x/Mt1ijnXBLMP0VSPzO3VoE8POf9GaLs/hXQkjxh1hX2Vlh8HGvklPp2SZyQKS62qArSQ/LnbyHNAk1SHIKOtarU4QdzpDAodlUqv1QYOUpzaLIcd8wMaILKy0qzOI8Mybg0z+LAAxBJN+DAJlOZWkqCaHKSI6lhvvYFcoaV0+4enma+Kk1yv+J3RX3GuwjTp1zfG1MwQeEge/AP6/MNCDgAOmjxvnTVFoqb48aF6dJVefZ1KOYakAj1smCnnJ11JFDudXiTjz4og98iYzYstHSPppgt/RNHUFwI+ypJRHIW+7O6bpIjAIkfzU+Ptgv0up2SzgLJcmpdzMs63sakTFHFkazUJyG+FGn+W4hcr1QiSADN3S3I0WfQbNm/WLvL/e+YWcGbffUM+ouAMug8iay7ZYNEdGutflVkFsdo8Dxfwj6qkOckjnKtcylviO/eAORhcqf18aBWzk1nJLSzLumnPsbTOCL0zhxRChrCYzYPgDkAWXPjoNVru4Cit8iFkO1iw1GChyypMFOTlkeVsWDyCgoUxjgqEnwVHjLKhKir4v93fc0UdLFjAGEzSjNdLQiCYGisHB/ydVI8zgh3onU12Mz+nfUz+FKfKhyiiUP4FkpLni0g46ZPMU+c=
