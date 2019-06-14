@@ -26,11 +26,9 @@ describe('Jobs route', () => {
     title: 'CEO',
     company: 'Microsoft',
     location: '80014',
-    listing: {
-      jobDescriptionText: 'this is a cool job',
-      jobUrl: 'www.microsoft.com',
-      salary: '$$$10000000000000000000000000'
-    },
+    jobDescriptionText: 'this is a cool job',
+    jobUrl: 'www.microsoft.com',
+    salary: '$$$10000000000000000000000000',
     tracking: 'jobOffer',
     active: true
   };
