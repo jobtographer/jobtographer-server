@@ -37,6 +37,6 @@ describe('Jobs route', () => {
     const job = await request(app)
       .post('/api/v1/jobs')
       .send(newJob);
-    expect(job.body).toEqual({ ...newJob, __v: 0, _id: expect.any(String) });
+    expect(job.body).toEqual({ ...newJob, __v: 0, _id: expect.any(String), date: expect.any(String) });
   });
 });
