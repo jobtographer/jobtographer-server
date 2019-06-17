@@ -4,6 +4,9 @@ const mongoose = require('mongoose');
 const connect = require('../../lib/utils/connect');
 const app = require('../../lib/app');
 
+jest.mock('../../lib/middleware/ensure-auth');
+jest.mock('../../lib/services/auth.js');
+
 // const createJob = job => {
 //   return request(app) 
 //     .post('app/v1/jobs')
@@ -37,7 +40,7 @@ describe('Jobs route', () => {
     const job = await request(app)
       .post('/api/v1/jobs')
       .send(newJob);
-    expect(job.body).toEqual({ ...newJob, __v: 0, _id: expect.any(String), date: expect.any(String) });
+    expect(job.body).toEqual({ ...newJob, __v: 0, _id: expect.any(String), date: expect.any(String), author: '12345' });
   });
 
   it('gets all jobs', async() => {
@@ -53,8 +56,8 @@ describe('Jobs route', () => {
       .get('/api/v1/jobs');
 
     expect(allJobs.body).toEqual([
-      { ...job1.body, _id: job1.body._id, date: job1.body.date }, 
-      { ...job2.body, _id: job2.body._id, date: job2.body.date }
+      { ...job1.body, _id: job1.body._id, date: job1.body.date, author: '12345' }, 
+      { ...job2.body, _id: job2.body._id, date: job2.body.date, author: '12345' }
     ]);
   });
 });
