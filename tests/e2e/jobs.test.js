@@ -75,21 +75,34 @@ describe('Jobs route', () => {
       _id: jobId[0]._id
     }]);
   });
-  // it('can update a job with id', async()=>{
-  //   const jobId = await getJob().author;
-  //   const updateJob = await request(app)
-  //     .patch(`/api/v1/jobs/${jobId}`)
-  //     .send({
-  //       title:'better title',
-  //       author:'better author',
-  //       company:'better company',
-  //       active: false,
-  //       jobDescriptionText: 'better description',
-  //       jobUrl:'www.better.com',
-  //       salary: '272829',
-  //       location: 'better place',
-  //       tracking: 'jobOffer',
-  //     });
-  // });
+  it('can update a job with id', async()=>{
+    const jobId = await getJob();
+    const updateJob = await request(app)
+      .patch(`/api/v1/jobs/${jobId[0]._id}`)
+      .send({
+        title:'better title',
+        author:'better author',
+        company:'better company',
+        active: false,
+        jobDescriptionText: 'better description',
+        jobUrl:'www.better.com',
+        salary: '272829',
+        location: 'better place',
+        tracking: 'jobOffer',
+      });
+
+    expect(updateJob.body).toEqual([{
+      ...jobId[0],
+      title:'better title',
+      author:'12345',
+      company:'better company',
+      active: false,
+      jobDescriptionText: 'better description',
+      jobUrl:'www.better.com',
+      salary: '272829',
+      location: 'better place',
+      tracking: 'jobOffer'
+    }]);
+  });
 });
 
