@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const connect = require('../../lib/utils/connect');
 const seedData = require('./seed-data');
@@ -15,7 +16,7 @@ beforeEach(()=>{
   return seedData();
 });
 
-beforeAll(()=>{
+afterAll(()=>{
   return mongoose.connection.close();
 });
 

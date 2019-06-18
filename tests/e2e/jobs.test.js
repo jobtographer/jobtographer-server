@@ -1,8 +1,9 @@
-require('dotenv').config();
+// require('dotenv').config();
 const request = require('supertest');
 const mongoose = require('mongoose');
 const connect = require('../../lib/utils/connect');
 const app = require('../../lib/app');
+const { getJob } = require('../data_helpers/data-helpers');
 
 jest.mock('../../lib/middleware/ensure-auth');
 jest.mock('../../lib/services/auth.js');
@@ -15,15 +16,15 @@ jest.mock('../../lib/services/auth.js');
 // };
 
 describe('Jobs route', () => {
-  beforeAll(() => {
-    return connect();
-  });
-  beforeEach(() => {
-    return mongoose.connection.dropDatabase();
-  });
-  afterAll(() => {
-    return mongoose.connection.close();
-  });
+  // beforeAll(() => {
+  //   return connect();
+  // });
+  // beforeEach(() => {
+  //   return mongoose.connection.dropDatabase();
+  // });
+  // afterAll(() => {
+  //   return mongoose.connection.close();
+  // });
 
   const newJob = {
     title: 'CEO',
