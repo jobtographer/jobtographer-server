@@ -14,8 +14,7 @@ module.exports = ({ jobCount = 5 } = {}) => {
     location: chance.zip(),
     tracking: 'interested',
   }));
-  console.log(jobs, 'work!!!!!!');
-
+  
   return Job
     .create(jobs);
 };
