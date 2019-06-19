@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const connect = require('../../lib/utils/connect');
 const seedData = require('./seed-data');
 const Job = require('../../lib/models/Job');
+const Note = require('../../lib/models/Note');
 
 beforeAll(()=>{
   return connect();
@@ -27,5 +28,6 @@ const createGetters = Model => ({
 });
 
 module.exports = {
-  ...createGetters(Job)
+  ...createGetters(Job),
+  ...createGetters(Note)
 };
