@@ -1,30 +1,12 @@
-// require('dotenv').config();
 const request = require('supertest');
-// const mongoose = require('mongoose');
-// const connect = require('../../lib/utils/connect');
 const app = require('../../lib/app');
 const { getJob } = require('../data_helpers/data-helpers');
 
 jest.mock('../../lib/middleware/ensure-auth');
 jest.mock('../../lib/services/auth.js');
 
-// const createJob = job => {
-//   return request(app) 
-//     .post('app/v1/jobs')
-//     .send(job)
-//     .then(res => res.body);
-// };
 
 describe('Jobs route', () => {
-  // beforeAll(() => {
-  //   return connect();
-  // });
-  // beforeEach(() => {
-  //   return mongoose.connection.dropDatabase();
-  // });
-  // afterAll(() => {
-  //   return mongoose.connection.close();
-  // });
 
   const newJob = {
     title: 'CEO',
@@ -67,13 +49,13 @@ describe('Jobs route', () => {
     const job = await request(app)
       .get(`/api/v1/jobs/${jobId[0]._id}`);
  
-    expect(job.body).toEqual([{
+    expect(job.body).toEqual({
       ...jobId[0],
       date: expect.any(String),
       author: '12345',
       __v: 0,
       _id: jobId[0]._id
-    }]);
+    });
   });
   it('can update a job with id', async()=>{
     const jobId = await getJob();

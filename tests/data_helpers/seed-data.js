@@ -2,7 +2,7 @@ const chance = require('chance').Chance();
 const Job = require('../../lib/models/Job');
 
 
-module.exports = ({ jobCount = 5 } = {}) => {
+module.exports = ({ jobCount = 5, noteCount = 60 } = {}) => {
   const jobs = [...Array(jobCount)].map(() => ({
     title: chance.profession(),
     author: chance.phone(),
