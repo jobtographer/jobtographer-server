@@ -3,7 +3,7 @@ const Job = require('../../lib/models/Job');
 const Note = require('../../lib/models/Note');
 const Asset = require('../../lib/models/Asset');
 
-module.exports = async({ jobCount = 5, noteCount = 60, resumeCount = 5 } = {}) => {
+module.exports = async({ jobCount = 5, noteCount = 60, resumeCount = 10 } = {}) => {
   const jobsArray = [...Array(jobCount)].map(() => ({
     title: chance.profession(),
     author: chance.phone(),
@@ -33,14 +33,16 @@ module.exports = async({ jobCount = 5, noteCount = 60, resumeCount = 5 } = {}) =
   const note = await Note
     .create(notesArray);
 
-  const resumes = [...Array(resumeCount)].map(() => {
-    const job = chance.pickone(jobs);
+  const resumes = [...Array(resumeCount)].map((_, i) => {
+    let assetType = 'resume';
+
+    if(i % 2 === 0) assetType = 'coverLetter';
     
     return {
       title: chance.profession(),
       body: chance.word(),
-      assetType: 'resume',
-      author: job.id
+      assetType,
+      author: '12345'
     };
   });
    
