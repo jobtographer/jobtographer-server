@@ -86,5 +86,16 @@ describe('Jobs route', () => {
       tracking: 'jobOffer'
     });
   });
+  it('can delete a job by id', async()=>{
+    const job = await getJob();
+    const jobId = job[0]._id;
+    const deletedJob = await request(app)
+      .delete(`/api/v1/jobs/${jobId}`);
+
+    expect(deletedJob.body).toEqual({
+      _id:expect.any(String)
+    });
+      
+  });
 });
 
