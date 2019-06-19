@@ -73,7 +73,7 @@ describe('Jobs route', () => {
         tracking: 'jobOffer',
       });
 
-    expect(updateJob.body).toEqual([{
+    expect(updateJob.body).toEqual({
       ...jobId[0],
       title:'better title',
       author:'12345',
@@ -84,7 +84,7 @@ describe('Jobs route', () => {
       salary: '272829',
       jobLocation: 'better place',
       tracking: 'jobOffer'
-    }]);
+    });
   });
 });
 
