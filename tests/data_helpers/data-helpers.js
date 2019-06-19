@@ -4,6 +4,7 @@ const connect = require('../../lib/utils/connect');
 const seedData = require('./seed-data');
 const Job = require('../../lib/models/Job');
 const Note = require('../../lib/models/Note');
+const Asset = require('../../lib/models/Asset');
 
 beforeAll(()=>{
   return connect();
@@ -29,5 +30,6 @@ const createGetters = Model => ({
 
 module.exports = {
   ...createGetters(Job),
-  ...createGetters(Note)
+  ...createGetters(Note),
+  ...createGetters(Asset)
 };

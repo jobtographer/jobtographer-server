@@ -41,7 +41,6 @@ describe('notes route', () => {
   });
   it('can delete a note by id', async()=>{
     const notes = await getNote();
-    console.log('noted', notes);
     const noteId = notes[0]._id;
     const deletedNote = await request(app)
       .delete(`/api/v1/notes/${noteId}`);
