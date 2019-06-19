@@ -11,7 +11,7 @@ describe('Jobs route', () => {
   const newJob = {
     title: 'CEO',
     company: 'Microsoft',
-    location: '80014',
+    jobLocation: '80014',
     jobDescriptionText: 'this is a cool job',
     jobUrl: 'www.microsoft.com',
     salary: '$$$10000000000000000000000000',
@@ -69,7 +69,7 @@ describe('Jobs route', () => {
         jobDescriptionText: 'better description',
         jobUrl:'www.better.com',
         salary: '272829',
-        location: 'better place',
+        jobLocation: 'better place',
         tracking: 'jobOffer',
       });
 
@@ -82,7 +82,7 @@ describe('Jobs route', () => {
       jobDescriptionText: 'better description',
       jobUrl:'www.better.com',
       salary: '272829',
-      location: 'better place',
+      jobLocation: 'better place',
       tracking: 'jobOffer'
     }]);
   });
