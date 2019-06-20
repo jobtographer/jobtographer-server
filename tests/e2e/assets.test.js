@@ -73,7 +73,7 @@ describe('assets route', () => {
     const deleted = await request(app)
       .delete(`/api/v1/assets/${assetId}`);
 
-    expect(deleted).toEqual({
+    expect(deleted.body).toEqual({
       _id:assetId
     });
 

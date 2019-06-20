@@ -21,7 +21,7 @@ describe('notes route', () => {
       .send(noteBody);
 
     expect(newNote.body).toEqual(
-      { ...noteBody, __v:0, _id: expect.any(String) }
+      { ...noteBody, __v:0, _id: expect.any(String), date: expect.any(String) }
     );
   });
   it('can find a note by job id', async()=>{
@@ -36,7 +36,8 @@ describe('notes route', () => {
       author: job[0].author,
       job: jobId,
       __v: 0,
-      _id: expect.any(String)
+      _id: expect.any(String),
+      date: expect.any(String)
     });
   });
   it('can delete a note by id', async()=>{
