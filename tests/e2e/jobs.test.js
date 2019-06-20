@@ -1,9 +1,11 @@
 const request = require('supertest');
 const app = require('../../lib/app');
 const { getJob } = require('../data_helpers/data-helpers');
+require('../data_helpers/data-helpers');
 
 jest.mock('../../lib/middleware/ensure-auth');
 jest.mock('../../lib/services/auth.js');
+jest.mock('../../lib/services/scraper.js');
 
 
 describe('Jobs route', () => {
@@ -13,7 +15,7 @@ describe('Jobs route', () => {
     company: 'Microsoft',
     jobLocation: '80014',
     jobDescriptionText: 'this is a cool job',
-    jobUrl: 'www.microsoft.com',
+    jobUrl: 'https://www.glassdoor.com/Job/jobs.htm?sc.keyword=engineer&locT=C&locId=1151614&locKeyword=Portland,%20OR&srs=RECENT_SEARCHES',
     salary: '$$$10000000000000000000000000',
     tracking: 'jobOffer',
     active: true
@@ -23,8 +25,10 @@ describe('Jobs route', () => {
     const job = await request(app)
       .post('/api/v1/jobs')
       .send(newJob);
-    expect(job.body).toEqual({ ...newJob, __v: 0, _id: expect.any(String), date: expect.any(String), author: '12345' });
-  });
+    expect(job.body).toEqual({
+      ...newJob, __v:0, _id:expect.any(String), author:'12345', date: expect.any(String), originalPosting: expect.any(String)
+    });
+  }, 12000);
 
   it('gets all jobs', async() => {
 
