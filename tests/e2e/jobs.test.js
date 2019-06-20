@@ -69,6 +69,7 @@ describe('Jobs route', () => {
         jobDescriptionText: 'better description',
         jobUrl:'www.better.com',
         salary: '272829',
+        
         jobLocation: 'better place',
         tracking: 'jobOffer',
       });
